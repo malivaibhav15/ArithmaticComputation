@@ -10,5 +10,5 @@ echo "Result of opeation (a+b*c)=$operation1"
 operation2=$(( $(($number1*$number2))+$number3 ))
 echo "Result of opeation (a*b+c)=$operation2"
 operation3=`expr "(($number3+$number1))/$number2" | bc -l`
-echo "Result of opeation (a*b+c)=$operation3"
+echo "Result of opeation (c+a/b)=$operation3"
 
