@@ -12,7 +12,7 @@ operation1=$(( $(($number1+$number2))*$number3 ))
 echo "Result of opeation (a+b*c)=$operation1"
 operation2=$(( $(($number1*$number2))+$number3 ))
 echo "Result of opeation (a*b+c)=$operation2"
-operation3=`expr "(($number3+$number1))/$number2" | bc -l`
+operation3=$(( $(($number3+$number1))/$number2 ))
 echo "Result of opeation (c+a/b)=$operation3"
 operation4=$(( $(($number1%$number2))+$number3 ))
 echo "Result of opeation (a%b+c)=$operation4"
@@ -26,4 +26,17 @@ for (( counter=0; counter<$size; counter++ ))
 do
 	array[counter]=${result[$counter]}
 done
-echo "Array={${array[@]}}"
+echo "Before sorting=Array={${array[@]}}"
+for (( counter=0;counter<$size;counter++ ))
+do
+	for (( index=$counter+1;index<$size;index++ ))
+	do
+		if [[ ${array[counter]} -gt  ${array[index]} ]]
+		then
+			small=${array[counter]}
+			array[counter]=${array[index]}
+			array[index]=$small
+		fi
+	done
+done
+echo "Array in asending order={${array[@]}}"
