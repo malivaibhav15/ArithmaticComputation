@@ -40,3 +40,17 @@ do
 	done
 done
 echo "Array in asending order={${array[@]}}"
+for (( counter=0;counter<$size;counter++ ))
+do
+	for (( index=$counter+1;index<$size;index++ ))
+	do
+		if [[ ${array[counter]} -lt  ${array[index]} ]]
+		then
+			larger=${array[counter]}
+			array[counter]=${array[index]}
+			array[index]=$larger
+		fi
+	done
+done
+echo "Array in descending order={${array[@]}}"
+
